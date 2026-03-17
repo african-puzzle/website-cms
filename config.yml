@@ -1,0 +1,84 @@
+backend:
+  name: github
+  repo: african-puzzle/website-frontend
+  branch: main
+
+site_url: https://africanpuzzle.com
+display_url: https://africanpuzzle.com
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: team
+    label: Team Members
+    folder: src/content/team
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: ['order', 'name']
+    fields:
+      - { label: Name, name: name, widget: string }
+      - label: Role
+        name: role
+        widget: object
+        fields:
+          - { label: French, name: fr, widget: string }
+          - { label: English, name: en, widget: string }
+          - { label: Pidgin, name: pcm, widget: string }
+      - { label: LinkedIn URL, name: linkedin, widget: string, required: false, default: '' }
+      - { label: Photo, name: photo, widget: image, required: false, default: '' }
+      - { label: Display Order, name: order, widget: number, value_type: int }
+
+  - name: media
+    label: Media Coverage
+    folder: src/content/media
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    sortable_fields: ['date', 'title']
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text, required: false, default: '' }
+      - { label: Date, name: date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: 'Radio & Podcasts', value: radio }
+          - { label: 'Press Release', value: press-release }
+          - { label: 'Articles', value: articles }
+          - { label: 'Videos', value: videos }
+          - { label: 'Social Mention', value: social }
+      - { label: Image, name: image, widget: image }
+      - { label: Link, name: link, widget: string }
+
+  - name: features
+    label: Features
+    folder: src/content/features
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { label: 'Title i18n Key', name: titleKey, widget: string }
+      - { label: 'Description i18n Key', name: descKey, widget: string }
+      - { label: GIF, name: gif, widget: image }
+      - { label: 'Card Background Class', name: cardBg, widget: string }
+      - { label: Display Order, name: order, widget: number, value_type: int }
+
+  - name: countries
+    label: Countries
+    files:
+      - name: countries
+        label: Countries List
+        file: src/content/countries/countries.json
+        fields:
+          - label: Countries
+            name: body
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Emoji Flag, name: emoji, widget: string }
+              - { label: French Name, name: fr, widget: string }
+              - { label: English Name, name: en, widget: string }
+              - { label: Pidgin Name, name: pcm, widget: string }
