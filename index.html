@@ -20,17 +20,51 @@
   <style>
     /* African Puzzle brand theming for Sveltia CMS */
     :root {
+      /* Primary accent — brand purple */
       --sui-primary-accent-color-light: #f3e8ff;
       --sui-primary-accent-color: #8C30F5;
       --sui-primary-accent-color-dark: #6b21a8;
       --sui-primary-accent-color-inverted: #ffffff;
+
+      /* Typography */
       --sui-primary-font-family: 'Montserrat', system-ui, sans-serif;
       --sui-primary-heading-font-family: 'Nunito', system-ui, sans-serif;
+
+      /* Secondary accent — brand teal (used sparingly for visual variety) */
+      --sui-secondary-accent-color: #1a7a6d;
     }
 
-    /* Style the login/auth screen */
+    /* Sidebar brand styling */
+    [class*="sidebar"], [class*="nav-bar"], nav[role="navigation"] {
+      font-family: 'Montserrat', system-ui, sans-serif;
+    }
+
+    /* Login / auth screen */
     [class*="login"], [class*="auth"] {
       font-family: 'Montserrat', system-ui, sans-serif;
+    }
+
+    /* Subtle top bar accent line */
+    header::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, #8C30F5, #1a7a6d);
+    }
+
+    /* Collection list item hover — subtle purple tint */
+    [class*="list-item"]:hover {
+      background-color: #f3e8ff;
+    }
+
+    /* Save/publish button — brand purple */
+    button[class*="publish"], button[class*="save"] {
+      background-color: #8C30F5 !important;
+      border-color: #8C30F5 !important;
+    }
+    button[class*="publish"]:hover, button[class*="save"]:hover {
+      background-color: #6b21a8 !important;
+      border-color: #6b21a8 !important;
     }
   </style>
 </head>
