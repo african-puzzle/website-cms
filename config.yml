@@ -1,4 +1,6 @@
-logo_url: https://africanpuzzle.com/images/logo-bright.svg
+logo:
+  src: https://africanpuzzle.com/images/logo-bright.svg
+  show_in_header: true
 
 backend:
   name: github
@@ -235,9 +237,9 @@ collections:
           - { label: 'Footer — Privacy', name: 'footer_privacy', widget: string }
           - { label: 'Footer — Made With', name: 'footer_made_with', widget: string }
           - { label: 'Footer — In', name: 'footer_in', widget: string }
-          - { label: 'Error — Not Found', name: 'error_notFound', widget: string }
-          - { label: 'Error — Not Found Desc', name: 'error_notFoundDescription', widget: text }
-          - { label: 'Error — Back Home', name: 'error_backHome', widget: string }
+          - { label: 'Error — Not Found', name: 'error_not_found', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error_not_found_description', widget: text }
+          - { label: 'Error — Back Home', name: 'error_back_home', widget: string }
 
       - name: en
         label: English (EN)
@@ -315,9 +317,9 @@ collections:
           - { label: 'Footer — Privacy', name: 'footer_privacy', widget: string }
           - { label: 'Footer — Made With', name: 'footer_made_with', widget: string }
           - { label: 'Footer — In', name: 'footer_in', widget: string }
-          - { label: 'Error — Not Found', name: 'error_notFound', widget: string }
-          - { label: 'Error — Not Found Desc', name: 'error_notFoundDescription', widget: text }
-          - { label: 'Error — Back Home', name: 'error_backHome', widget: string }
+          - { label: 'Error — Not Found', name: 'error_not_found', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error_not_found_description', widget: text }
+          - { label: 'Error — Back Home', name: 'error_back_home', widget: string }
 
       - name: pcm
         label: Pidgin (PCM)
@@ -395,6 +397,6 @@ collections:
           - { label: 'Footer — Privacy', name: 'footer_privacy', widget: string }
           - { label: 'Footer — Made With', name: 'footer_made_with', widget: string }
           - { label: 'Footer — In', name: 'footer_in', widget: string }
-          - { label: 'Error — Not Found', name: 'error_notFound', widget: string }
-          - { label: 'Error — Not Found Desc', name: 'error_notFoundDescription', widget: text }
-          - { label: 'Error — Back Home', name: 'error_backHome', widget: string }
+          - { label: 'Error — Not Found', name: 'error_not_found', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error_not_found_description', widget: text }
+          - { label: 'Error — Back Home', name: 'error_back_home', widget: string }
