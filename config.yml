@@ -2,6 +2,7 @@ backend:
   name: github
   repo: african-puzzle/website-frontend
   branch: main
+  base_url: https://sveltia-cms-auth.proverb-drinker9c.workers.dev
 
 site_url: https://africanpuzzle.com
 display_url: https://africanpuzzle.com
