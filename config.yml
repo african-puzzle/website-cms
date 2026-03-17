@@ -85,3 +85,316 @@ collections:
               - { label: French Name, name: fr, widget: string }
               - { label: English Name, name: en, widget: string }
               - { label: Pidgin Name, name: pcm, widget: string }
+
+  - name: site-settings
+    label: Site Settings
+    files:
+      - name: site
+        label: General Settings
+        file: src/content/settings/site.json
+        fields:
+          - label: Settings
+            name: body
+            widget: list
+            max: 1
+            fields:
+              - { label: ID, name: id, widget: hidden, default: 'site' }
+              - { label: Play Store URL, name: playStoreUrl, widget: string }
+              - { label: YouTube Video ID, name: youtubeVideoId, widget: string }
+              - { label: Contact Email, name: contactEmail, widget: string }
+              - { label: Contact Phone, name: contactPhone, widget: string }
+              - { label: Instagram Handle, name: instagramHandle, widget: string }
+              - { label: Instagram URL, name: instagramUrl, widget: string }
+
+      - name: social-links
+        label: Social Links
+        file: src/content/settings/social-links.json
+        fields:
+          - label: Links
+            name: body
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - label: Platform
+                name: platform
+                widget: select
+                options: ['WhatsApp', 'Facebook', 'Instagram', 'Telegram', 'Twitter', 'LinkedIn', 'YouTube']
+              - { label: URL, name: url, widget: string }
+              - { label: 'Handle / Display Value', name: handle, widget: string, required: false, default: '' }
+              - { label: Show in Footer, name: showInFooter, widget: boolean, default: false }
+              - { label: Show in Contact Page, name: showInContact, widget: boolean, default: false }
+              - { label: Display Order, name: order, widget: number, value_type: int }
+
+      - name: instagram
+        label: Instagram Feed
+        file: src/content/settings/instagram.json
+        fields:
+          - label: Posts
+            name: body
+            widget: list
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Image, name: image, widget: image }
+              - { label: Instagram Link, name: link, widget: string }
+              - { label: Display Order, name: order, widget: number, value_type: int }
+
+  - name: privacy
+    label: Privacy Policy
+    folder: src/content/privacy
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Effective Date, name: effectiveDate, widget: string }
+      - label: Locale
+        name: locale
+        widget: select
+        options:
+          - { label: French, value: fr }
+          - { label: English, value: en }
+          - { label: Pidgin, value: pcm }
+      - { label: Content, name: body, widget: markdown }
+
+  - name: translations
+    label: Translations
+    files:
+      - name: fr
+        label: French (FR)
+        file: src/i18n/translations/fr.json
+        fields:
+          - { label: 'Site Name', name: 'site.name', widget: string }
+          - { label: 'Site Tagline', name: 'site.tagline', widget: string }
+          - { label: 'Nav — Home', name: 'nav.home', widget: string }
+          - { label: 'Nav — Features', name: 'nav.features', widget: string }
+          - { label: 'Nav — About', name: 'nav.about', widget: string }
+          - { label: 'Nav — Contact', name: 'nav.contact', widget: string }
+          - { label: 'Nav — Media', name: 'nav.media', widget: string }
+          - { label: 'Nav — Download', name: 'nav.download', widget: string }
+          - { label: 'Nav — Language', name: 'nav.language', widget: string }
+          - { label: 'Hero — Title', name: 'hero.title', widget: string }
+          - { label: 'Hero — Subtitle', name: 'hero.subtitle', widget: string }
+          - { label: 'Hero — CTA', name: 'hero.cta', widget: string }
+          - { label: 'Hero — Learn More', name: 'hero.learn_more', widget: string }
+          - { label: 'Intro — Title', name: 'intro.title', widget: string }
+          - { label: 'Intro — Subtitle', name: 'intro.subtitle', widget: string }
+          - { label: 'Intro — Audiences', name: 'intro.audiences', widget: string }
+          - { label: 'Features — Label', name: 'features.label', widget: string }
+          - { label: 'Features — Title', name: 'features.title', widget: string }
+          - { label: 'Features — Subtitle', name: 'features.subtitle', widget: string }
+          - { label: 'Features — Projects Title', name: 'features.projects.title', widget: string }
+          - { label: 'Features — Projects Desc', name: 'features.projects.desc', widget: text }
+          - { label: 'Features — Clients Title', name: 'features.clients.title', widget: string }
+          - { label: 'Features — Clients Desc', name: 'features.clients.desc', widget: text }
+          - { label: 'Features — Album Title', name: 'features.album.title', widget: string }
+          - { label: 'Features — Album Desc', name: 'features.album.desc', widget: text }
+          - { label: 'Features — Appointments Title', name: 'features.appointments.title', widget: string }
+          - { label: 'Features — Appointments Desc', name: 'features.appointments.desc', widget: text }
+          - { label: 'Benefits — Label', name: 'benefits.label', widget: string }
+          - { label: 'Benefits — Title', name: 'benefits.title', widget: string }
+          - { label: 'Benefits — Happy Title', name: 'benefits.happy.title', widget: string }
+          - { label: 'Benefits — Happy Desc', name: 'benefits.happy.desc', widget: text }
+          - { label: 'Benefits — Time Title', name: 'benefits.time.title', widget: string }
+          - { label: 'Benefits — Time Desc', name: 'benefits.time.desc', widget: text }
+          - { label: 'Benefits — Efficient Title', name: 'benefits.efficient.title', widget: string }
+          - { label: 'Benefits — Efficient Desc', name: 'benefits.efficient.desc', widget: text }
+          - { label: 'Reach — Label', name: 'reach.label', widget: string }
+          - { label: 'Reach — Title', name: 'reach.title', widget: string }
+          - { label: 'Reach — Subtitle', name: 'reach.subtitle', widget: string }
+          - { label: 'CTA — Title', name: 'cta.title', widget: string }
+          - { label: 'CTA — Subtitle', name: 'cta.subtitle', widget: string }
+          - { label: 'CTA — Button', name: 'cta.button', widget: string }
+          - { label: 'About — Label', name: 'about.label', widget: string }
+          - { label: 'About — Title', name: 'about.title', widget: string }
+          - { label: 'About — Subtitle', name: 'about.subtitle', widget: string }
+          - { label: 'About — Innovation', name: 'about.innovation', widget: text }
+          - { label: 'About — Creative Statement', name: 'about.creative_statement', widget: string }
+          - { label: 'About — Mission', name: 'about.mission', widget: text }
+          - { label: 'About — Team Title', name: 'about.team_title', widget: string }
+          - { label: 'Contact — Label', name: 'contact.label', widget: string }
+          - { label: 'Contact — Title', name: 'contact.title', widget: string }
+          - { label: 'Contact — Subtitle', name: 'contact.subtitle', widget: string }
+          - { label: 'Contact — Address Label', name: 'contact.address_label', widget: string }
+          - { label: 'Contact — Company Name', name: 'contact.address_company', widget: string }
+          - { label: 'Contact — Street', name: 'contact.address_street', widget: string }
+          - { label: 'Contact — City', name: 'contact.address_city', widget: string }
+          - { label: 'Contact — Email Label', name: 'contact.email_label', widget: string }
+          - { label: 'Contact — Social Label', name: 'contact.social_label', widget: string }
+          - { label: 'Media — Label', name: 'media.label', widget: string }
+          - { label: 'Media — Title', name: 'media.title', widget: string }
+          - { label: 'Media — Subtitle', name: 'media.subtitle', widget: string }
+          - { label: 'Media — Press Article', name: 'media.press_article', widget: string }
+          - { label: 'Media — Filter All', name: 'media.filter_all', widget: string }
+          - { label: 'Media — Filter Press Release', name: 'media.filter_press_release', widget: string }
+          - { label: 'Media — Filter Videos', name: 'media.filter_videos', widget: string }
+          - { label: 'Media — Load More', name: 'media.load_more', widget: string }
+          - { label: 'Privacy — Title', name: 'privacy.title', widget: string }
+          - { label: 'Privacy — Effective', name: 'privacy.effective', widget: string }
+          - { label: 'Download Banner — Title', name: 'download_banner.title', widget: string }
+          - { label: 'Footer — Rights', name: 'footer.rights', widget: string }
+          - { label: 'Footer — Privacy', name: 'footer.privacy', widget: string }
+          - { label: 'Footer — Made With', name: 'footer.made_with', widget: string }
+          - { label: 'Footer — In', name: 'footer.in', widget: string }
+          - { label: 'Error — Not Found', name: 'error.notFound', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error.notFoundDescription', widget: text }
+          - { label: 'Error — Back Home', name: 'error.backHome', widget: string }
+
+      - name: en
+        label: English (EN)
+        file: src/i18n/translations/en.json
+        fields:
+          - { label: 'Site Name', name: 'site.name', widget: string }
+          - { label: 'Site Tagline', name: 'site.tagline', widget: string }
+          - { label: 'Nav — Home', name: 'nav.home', widget: string }
+          - { label: 'Nav — Features', name: 'nav.features', widget: string }
+          - { label: 'Nav — About', name: 'nav.about', widget: string }
+          - { label: 'Nav — Contact', name: 'nav.contact', widget: string }
+          - { label: 'Nav — Media', name: 'nav.media', widget: string }
+          - { label: 'Nav — Download', name: 'nav.download', widget: string }
+          - { label: 'Nav — Language', name: 'nav.language', widget: string }
+          - { label: 'Hero — Title', name: 'hero.title', widget: string }
+          - { label: 'Hero — Subtitle', name: 'hero.subtitle', widget: string }
+          - { label: 'Hero — CTA', name: 'hero.cta', widget: string }
+          - { label: 'Hero — Learn More', name: 'hero.learn_more', widget: string }
+          - { label: 'Intro — Title', name: 'intro.title', widget: string }
+          - { label: 'Intro — Subtitle', name: 'intro.subtitle', widget: string }
+          - { label: 'Intro — Audiences', name: 'intro.audiences', widget: string }
+          - { label: 'Features — Label', name: 'features.label', widget: string }
+          - { label: 'Features — Title', name: 'features.title', widget: string }
+          - { label: 'Features — Subtitle', name: 'features.subtitle', widget: string }
+          - { label: 'Features — Projects Title', name: 'features.projects.title', widget: string }
+          - { label: 'Features — Projects Desc', name: 'features.projects.desc', widget: text }
+          - { label: 'Features — Clients Title', name: 'features.clients.title', widget: string }
+          - { label: 'Features — Clients Desc', name: 'features.clients.desc', widget: text }
+          - { label: 'Features — Album Title', name: 'features.album.title', widget: string }
+          - { label: 'Features — Album Desc', name: 'features.album.desc', widget: text }
+          - { label: 'Features — Appointments Title', name: 'features.appointments.title', widget: string }
+          - { label: 'Features — Appointments Desc', name: 'features.appointments.desc', widget: text }
+          - { label: 'Benefits — Label', name: 'benefits.label', widget: string }
+          - { label: 'Benefits — Title', name: 'benefits.title', widget: string }
+          - { label: 'Benefits — Happy Title', name: 'benefits.happy.title', widget: string }
+          - { label: 'Benefits — Happy Desc', name: 'benefits.happy.desc', widget: text }
+          - { label: 'Benefits — Time Title', name: 'benefits.time.title', widget: string }
+          - { label: 'Benefits — Time Desc', name: 'benefits.time.desc', widget: text }
+          - { label: 'Benefits — Efficient Title', name: 'benefits.efficient.title', widget: string }
+          - { label: 'Benefits — Efficient Desc', name: 'benefits.efficient.desc', widget: text }
+          - { label: 'Reach — Label', name: 'reach.label', widget: string }
+          - { label: 'Reach — Title', name: 'reach.title', widget: string }
+          - { label: 'Reach — Subtitle', name: 'reach.subtitle', widget: string }
+          - { label: 'CTA — Title', name: 'cta.title', widget: string }
+          - { label: 'CTA — Subtitle', name: 'cta.subtitle', widget: string }
+          - { label: 'CTA — Button', name: 'cta.button', widget: string }
+          - { label: 'About — Label', name: 'about.label', widget: string }
+          - { label: 'About — Title', name: 'about.title', widget: string }
+          - { label: 'About — Subtitle', name: 'about.subtitle', widget: string }
+          - { label: 'About — Innovation', name: 'about.innovation', widget: text }
+          - { label: 'About — Creative Statement', name: 'about.creative_statement', widget: string }
+          - { label: 'About — Mission', name: 'about.mission', widget: text }
+          - { label: 'About — Team Title', name: 'about.team_title', widget: string }
+          - { label: 'Contact — Label', name: 'contact.label', widget: string }
+          - { label: 'Contact — Title', name: 'contact.title', widget: string }
+          - { label: 'Contact — Subtitle', name: 'contact.subtitle', widget: string }
+          - { label: 'Contact — Address Label', name: 'contact.address_label', widget: string }
+          - { label: 'Contact — Company Name', name: 'contact.address_company', widget: string }
+          - { label: 'Contact — Street', name: 'contact.address_street', widget: string }
+          - { label: 'Contact — City', name: 'contact.address_city', widget: string }
+          - { label: 'Contact — Email Label', name: 'contact.email_label', widget: string }
+          - { label: 'Contact — Social Label', name: 'contact.social_label', widget: string }
+          - { label: 'Media — Label', name: 'media.label', widget: string }
+          - { label: 'Media — Title', name: 'media.title', widget: string }
+          - { label: 'Media — Subtitle', name: 'media.subtitle', widget: string }
+          - { label: 'Media — Press Article', name: 'media.press_article', widget: string }
+          - { label: 'Media — Filter All', name: 'media.filter_all', widget: string }
+          - { label: 'Media — Filter Press Release', name: 'media.filter_press_release', widget: string }
+          - { label: 'Media — Filter Videos', name: 'media.filter_videos', widget: string }
+          - { label: 'Media — Load More', name: 'media.load_more', widget: string }
+          - { label: 'Privacy — Title', name: 'privacy.title', widget: string }
+          - { label: 'Privacy — Effective', name: 'privacy.effective', widget: string }
+          - { label: 'Download Banner — Title', name: 'download_banner.title', widget: string }
+          - { label: 'Footer — Rights', name: 'footer.rights', widget: string }
+          - { label: 'Footer — Privacy', name: 'footer.privacy', widget: string }
+          - { label: 'Footer — Made With', name: 'footer.made_with', widget: string }
+          - { label: 'Footer — In', name: 'footer.in', widget: string }
+          - { label: 'Error — Not Found', name: 'error.notFound', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error.notFoundDescription', widget: text }
+          - { label: 'Error — Back Home', name: 'error.backHome', widget: string }
+
+      - name: pcm
+        label: Pidgin (PCM)
+        file: src/i18n/translations/pcm.json
+        fields:
+          - { label: 'Site Name', name: 'site.name', widget: string }
+          - { label: 'Site Tagline', name: 'site.tagline', widget: string }
+          - { label: 'Nav — Home', name: 'nav.home', widget: string }
+          - { label: 'Nav — Features', name: 'nav.features', widget: string }
+          - { label: 'Nav — About', name: 'nav.about', widget: string }
+          - { label: 'Nav — Contact', name: 'nav.contact', widget: string }
+          - { label: 'Nav — Media', name: 'nav.media', widget: string }
+          - { label: 'Nav — Download', name: 'nav.download', widget: string }
+          - { label: 'Nav — Language', name: 'nav.language', widget: string }
+          - { label: 'Hero — Title', name: 'hero.title', widget: string }
+          - { label: 'Hero — Subtitle', name: 'hero.subtitle', widget: string }
+          - { label: 'Hero — CTA', name: 'hero.cta', widget: string }
+          - { label: 'Hero — Learn More', name: 'hero.learn_more', widget: string }
+          - { label: 'Intro — Title', name: 'intro.title', widget: string }
+          - { label: 'Intro — Subtitle', name: 'intro.subtitle', widget: string }
+          - { label: 'Intro — Audiences', name: 'intro.audiences', widget: string }
+          - { label: 'Features — Label', name: 'features.label', widget: string }
+          - { label: 'Features — Title', name: 'features.title', widget: string }
+          - { label: 'Features — Subtitle', name: 'features.subtitle', widget: string }
+          - { label: 'Features — Projects Title', name: 'features.projects.title', widget: string }
+          - { label: 'Features — Projects Desc', name: 'features.projects.desc', widget: text }
+          - { label: 'Features — Clients Title', name: 'features.clients.title', widget: string }
+          - { label: 'Features — Clients Desc', name: 'features.clients.desc', widget: text }
+          - { label: 'Features — Album Title', name: 'features.album.title', widget: string }
+          - { label: 'Features — Album Desc', name: 'features.album.desc', widget: text }
+          - { label: 'Features — Appointments Title', name: 'features.appointments.title', widget: string }
+          - { label: 'Features — Appointments Desc', name: 'features.appointments.desc', widget: text }
+          - { label: 'Benefits — Label', name: 'benefits.label', widget: string }
+          - { label: 'Benefits — Title', name: 'benefits.title', widget: string }
+          - { label: 'Benefits — Happy Title', name: 'benefits.happy.title', widget: string }
+          - { label: 'Benefits — Happy Desc', name: 'benefits.happy.desc', widget: text }
+          - { label: 'Benefits — Time Title', name: 'benefits.time.title', widget: string }
+          - { label: 'Benefits — Time Desc', name: 'benefits.time.desc', widget: text }
+          - { label: 'Benefits — Efficient Title', name: 'benefits.efficient.title', widget: string }
+          - { label: 'Benefits — Efficient Desc', name: 'benefits.efficient.desc', widget: text }
+          - { label: 'Reach — Label', name: 'reach.label', widget: string }
+          - { label: 'Reach — Title', name: 'reach.title', widget: string }
+          - { label: 'Reach — Subtitle', name: 'reach.subtitle', widget: string }
+          - { label: 'CTA — Title', name: 'cta.title', widget: string }
+          - { label: 'CTA — Subtitle', name: 'cta.subtitle', widget: string }
+          - { label: 'CTA — Button', name: 'cta.button', widget: string }
+          - { label: 'About — Label', name: 'about.label', widget: string }
+          - { label: 'About — Title', name: 'about.title', widget: string }
+          - { label: 'About — Subtitle', name: 'about.subtitle', widget: string }
+          - { label: 'About — Innovation', name: 'about.innovation', widget: text }
+          - { label: 'About — Creative Statement', name: 'about.creative_statement', widget: string }
+          - { label: 'About — Mission', name: 'about.mission', widget: text }
+          - { label: 'About — Team Title', name: 'about.team_title', widget: string }
+          - { label: 'Contact — Label', name: 'contact.label', widget: string }
+          - { label: 'Contact — Title', name: 'contact.title', widget: string }
+          - { label: 'Contact — Subtitle', name: 'contact.subtitle', widget: string }
+          - { label: 'Contact — Address Label', name: 'contact.address_label', widget: string }
+          - { label: 'Contact — Company Name', name: 'contact.address_company', widget: string }
+          - { label: 'Contact — Street', name: 'contact.address_street', widget: string }
+          - { label: 'Contact — City', name: 'contact.address_city', widget: string }
+          - { label: 'Contact — Email Label', name: 'contact.email_label', widget: string }
+          - { label: 'Contact — Social Label', name: 'contact.social_label', widget: string }
+          - { label: 'Media — Label', name: 'media.label', widget: string }
+          - { label: 'Media — Title', name: 'media.title', widget: string }
+          - { label: 'Media — Subtitle', name: 'media.subtitle', widget: string }
+          - { label: 'Media — Press Article', name: 'media.press_article', widget: string }
+          - { label: 'Media — Filter All', name: 'media.filter_all', widget: string }
+          - { label: 'Media — Filter Press Release', name: 'media.filter_press_release', widget: string }
+          - { label: 'Media — Filter Videos', name: 'media.filter_videos', widget: string }
+          - { label: 'Media — Load More', name: 'media.load_more', widget: string }
+          - { label: 'Privacy — Title', name: 'privacy.title', widget: string }
+          - { label: 'Privacy — Effective', name: 'privacy.effective', widget: string }
+          - { label: 'Download Banner — Title', name: 'download_banner.title', widget: string }
+          - { label: 'Footer — Rights', name: 'footer.rights', widget: string }
+          - { label: 'Footer — Privacy', name: 'footer.privacy', widget: string }
+          - { label: 'Footer — Made With', name: 'footer.made_with', widget: string }
+          - { label: 'Footer — In', name: 'footer.in', widget: string }
+          - { label: 'Error — Not Found', name: 'error.notFound', widget: string }
+          - { label: 'Error — Not Found Desc', name: 'error.notFoundDescription', widget: text }
+          - { label: 'Error — Back Home', name: 'error.backHome', widget: string }
