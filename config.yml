@@ -1,3 +1,5 @@
+logo_url: https://africanpuzzle.com/images/logo-bright.svg
+
 backend:
   name: github
   repo: african-puzzle/website-frontend
