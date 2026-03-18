@@ -162,5 +162,34 @@
 </head>
 <body>
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  <script>
+    (function () {
+      var BRAND_TITLE = 'Content Manager \u2014 African Puzzle';
+      var BRAND_NAME = 'African Puzzle CMS';
+
+      /* Keep document.title branded despite Sveltia CMS overriding it */
+      new MutationObserver(function () {
+        if (document.title !== BRAND_TITLE) document.title = BRAND_TITLE;
+      }).observe(document.querySelector('title'), { childList: true });
+
+      /* Replace visible "Sveltia CMS" text in the rendered UI */
+      function rebrandText(root) {
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+          if (walker.currentNode.nodeValue.includes('Sveltia CMS')) {
+            walker.currentNode.nodeValue = walker.currentNode.nodeValue.replace(/Sveltia CMS/g, BRAND_NAME);
+          }
+        }
+      }
+
+      new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          m.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1) rebrandText(node);
+          });
+        });
+      }).observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
 </body>
 </html>
