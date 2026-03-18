@@ -190,6 +190,27 @@ collections:
               - { label: Instagram Link, name: link, widget: string }
               - { label: Display Order, name: order, widget: number, value_type: int }
 
+      - name: about-page
+        label: About Page
+        file: src/content/settings/about-page.json
+        fields:
+          - label: Hero Image
+            name: heroImage
+            widget: image
+            hint: "The large background image at the top of the About page"
+          - label: Phone Mockup Image
+            name: phoneMockupImage
+            widget: image
+            hint: "The phone screenshot image shown in the purple card"
+          - label: Card Heading
+            name: cardHeading
+            widget: string
+            hint: "The heading text in the colored container beneath the phone"
+          - label: Card Body
+            name: cardBody
+            widget: text
+            hint: "The body text in the colored container beneath the phone"
+
   - name: privacy
     label: Privacy Policy
     label_singular: Privacy Policy
