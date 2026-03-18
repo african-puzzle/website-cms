@@ -67,7 +67,12 @@
       border-color: #6b21a8 !important;
     }
 
-    /* Base typography — 16px root with balanced rhythm */
+    /* ── Typographic scale ─────────────────────────────────
+       Base:     1rem    (16px) — body, list items, sidebar
+       Labels:   0.875rem (14px) — uppercase field labels
+       Headings: 1.25rem  (20px) — section headings
+       Titles:   1.5rem   (24px) — page titles
+       ───────────────────────────────────────────────────── */
     html {
       font-size: 16px;
     }
@@ -76,17 +81,61 @@
       line-height: 1.5;
     }
 
+    /* Sidebar text — enforce 16px minimum */
+    [class*="sidebar"] a,
+    [class*="sidebar"] span,
+    [class*="sidebar"] li,
+    [class*="nav-bar"] a,
+    [class*="nav-bar"] span,
+    nav[role="navigation"] a,
+    nav[role="navigation"] span {
+      font-size: 1rem !important;
+    }
+
+    /* Content list items — enforce 16px minimum */
+    [class*="list-item"],
+    [class*="list-item"] span,
+    [class*="list-item"] a,
+    [class*="entry-listing"],
+    [class*="entry-listing"] span,
+    [class*="entry-listing"] a {
+      font-size: 1rem !important;
+    }
+
+    /* Section headings */
+    [class*="pane-header"] h2,
+    [class*="pane-header"] h3,
+    [class*="toolbar"] h2,
+    [class*="toolbar"] h3,
+    [class*="collection-header"],
+    [class*="section-heading"] {
+      font-size: 1.25rem !important;
+    }
+
+    /* Page titles */
+    [class*="pane-header"] h1,
+    [class*="toolbar"] h1,
+    [class*="page-title"] {
+      font-size: 1.5rem !important;
+    }
+
+    /* Global minimum font-size safety net for CMS container */
+    [id="nc-root"] *,
+    [class*="cms-container"] * {
+      font-size: max(var(--_fs, 0.875rem), 0.875rem);
+    }
+
     /* Tighter form spacing */
     [class*="field-wrapper"],
     [class*="field-group"] {
       margin-bottom: 0.75rem !important;
     }
 
-    /* Field label styling — smaller, uppercase, weighted */
+    /* Field label styling — uppercase, weighted, 14px (visually ~16px with caps + tracking) */
     label[class*="field-label"],
     [class*="field-wrapper"] > label {
       text-transform: uppercase;
-      font-size: 0.75rem;
+      font-size: 0.875rem !important;
       font-weight: 600;
       letter-spacing: 0.04em;
       color: #4a4a4a;
