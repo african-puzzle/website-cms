@@ -144,33 +144,6 @@ collections:
             name: youtubeVideoId
             widget: string
             hint: "The 11-character ID from the YouTube URL (e.g. dQw4w9WgXcQ)"
-          - label: Contact Email
-            name: contactEmail
-            widget: string
-            pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', 'Must be a valid email address']
-          - { label: Contact Phone, name: contactPhone, widget: string, required: false, default: '' }
-          - { label: Instagram Handle, name: instagramHandle, widget: string }
-          - { label: Instagram URL, name: instagramUrl, widget: string }
-
-      - name: social-links
-        label: Social Links
-        file: src/content/settings/social-links.json
-        fields:
-          - label: Links
-            name: social_links
-            widget: list
-            fields:
-              - { label: ID, name: id, widget: string }
-              - label: Platform
-                name: platform
-                widget: select
-                options: ['WhatsApp', 'Facebook', 'Instagram', 'Telegram', 'Twitter', 'LinkedIn', 'YouTube']
-              - { label: URL, name: url, widget: string }
-              - { label: 'Handle / Display Value', name: handle, widget: string, required: false, default: '' }
-              - { label: Show in Footer, name: showInFooter, widget: boolean, default: false }
-              - { label: Show in Contact Page, name: showInContact, widget: boolean, default: false }
-              - { label: Display Order, name: order, widget: number, value_type: int }
-
       - name: instagram
         label: Instagram Feed
         file: src/content/settings/instagram.json
@@ -204,6 +177,38 @@ collections:
             name: cardBody
             widget: text
             hint: "The body text in the colored container beneath the phone"
+
+  - name: contact
+    label: Contact
+    files:
+      - name: contact
+        label: Contact
+        file: src/content/contact/contact.json
+        fields:
+          - label: Contact Methods
+            name: contact_methods
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - label: Icon
+                name: icon
+                widget: select
+                options:
+                  - { label: WhatsApp, value: whatsapp }
+                  - { label: Facebook, value: facebook }
+                  - { label: Instagram, value: instagram }
+                  - { label: Telegram, value: telegram }
+                  - { label: Twitter, value: twitter }
+                  - { label: LinkedIn, value: linkedin }
+                  - { label: YouTube, value: youtube }
+                  - { label: Email, value: email }
+                  - { label: Phone, value: phone }
+                  - { label: Address, value: address }
+                  - { label: Website, value: website }
+              - { label: Value, name: value, widget: text, hint: "Phone number, handle, URL, or address" }
+              - { label: Link URL, name: url, widget: string, required: false, default: '', hint: "Optional clickable link (tel:, mailto:, or https://)" }
+              - { label: Display Order, name: order, widget: number, value_type: int }
 
   - name: privacy
     label: Privacy Policy
