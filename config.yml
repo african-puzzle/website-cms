@@ -120,7 +120,7 @@ collections:
         file: src/content/countries/countries.json
         fields:
           - label: Countries
-            name: body
+            name: countries
             widget: list
             fields:
               - { label: ID, name: id, widget: string }
@@ -136,34 +136,28 @@ collections:
         label: General Settings
         file: src/content/settings/site.json
         fields:
-          - label: Settings
-            name: body
-            widget: list
-            max: 1
-            fields:
-              - { label: ID, name: id, widget: hidden, default: 'site' }
-              - label: Play Store URL
-                name: playStoreUrl
-                widget: string
-                pattern: ['^https://play\.google\.com/store/apps/details\?id=.*$', 'Must be a valid Google Play Store URL']
-              - label: YouTube Video ID
-                name: youtubeVideoId
-                widget: string
-                hint: "The 11-character ID from the YouTube URL (e.g. dQw4w9WgXcQ)"
-              - label: Contact Email
-                name: contactEmail
-                widget: string
-                pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', 'Must be a valid email address']
-              - { label: Contact Phone, name: contactPhone, widget: string }
-              - { label: Instagram Handle, name: instagramHandle, widget: string }
-              - { label: Instagram URL, name: instagramUrl, widget: string }
+          - label: Play Store URL
+            name: playStoreUrl
+            widget: string
+            pattern: ['^https://play\.google\.com/store/apps/details\?id=.*$', 'Must be a valid Google Play Store URL']
+          - label: YouTube Video ID
+            name: youtubeVideoId
+            widget: string
+            hint: "The 11-character ID from the YouTube URL (e.g. dQw4w9WgXcQ)"
+          - label: Contact Email
+            name: contactEmail
+            widget: string
+            pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', 'Must be a valid email address']
+          - { label: Contact Phone, name: contactPhone, widget: string, required: false, default: '' }
+          - { label: Instagram Handle, name: instagramHandle, widget: string }
+          - { label: Instagram URL, name: instagramUrl, widget: string }
 
       - name: social-links
         label: Social Links
         file: src/content/settings/social-links.json
         fields:
           - label: Links
-            name: body
+            name: social_links
             widget: list
             fields:
               - { label: ID, name: id, widget: string }
@@ -177,12 +171,25 @@ collections:
               - { label: Show in Contact Page, name: showInContact, widget: boolean, default: false }
               - { label: Display Order, name: order, widget: number, value_type: int }
 
+      - name: about-page
+        label: About Page
+        file: src/content/settings/about-page.json
+        fields:
+          - label: Hero Image
+            name: heroImage
+            widget: image
+            hint: "The large background image at the top of the About page"
+          - label: Phone Mockup Image
+            name: phoneMockupImage
+            widget: image
+            hint: "The phone screenshot image shown in the purple card"
+
       - name: instagram
         label: Instagram Feed
         file: src/content/settings/instagram.json
         fields:
           - label: Posts
-            name: body
+            name: posts
             widget: list
             fields:
               - { label: ID, name: id, widget: string }
