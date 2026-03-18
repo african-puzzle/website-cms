@@ -66,6 +66,49 @@
       background-color: #6b21a8 !important;
       border-color: #6b21a8 !important;
     }
+
+    /* Base typography — 16px root with balanced rhythm */
+    html {
+      font-size: 16px;
+    }
+    body {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Tighter form spacing */
+    [class*="field-wrapper"],
+    [class*="field-group"] {
+      margin-bottom: 0.75rem !important;
+    }
+
+    /* Field label styling — smaller, uppercase, weighted */
+    label[class*="field-label"],
+    [class*="field-wrapper"] > label {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #4a4a4a;
+    }
+
+    /* Active sidebar collection item highlight */
+    [class*="sidebar"] [class*="active"],
+    nav[role="navigation"] [aria-current="true"] {
+      border-left: 3px solid #8C30F5;
+      background-color: #f3e8ff;
+    }
+
+    /* Hide preview pane — full-width editor */
+    [class*="preview-pane"],
+    [class*="editor-preview"] {
+      display: none !important;
+    }
+    [class*="editor-pane"],
+    [class*="control-pane"] {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
   </style>
 </head>
 <body>
