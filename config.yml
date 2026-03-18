@@ -95,11 +95,11 @@ collections:
       - label: Title i18n Key
         name: titleKey
         widget: string
-        hint: "i18n key for the feature title (e.g. features_projects_title)"
+        hint: "i18n key for the feature title (e.g. features.projects_title)"
       - label: Description i18n Key
         name: descKey
         widget: string
-        hint: "i18n key for the feature description (e.g. features_projects_desc)"
+        hint: "i18n key for the feature description (e.g. features.projects_desc)"
       - { label: GIF, name: gif, widget: image }
       - label: Card Background Class
         name: cardBg
