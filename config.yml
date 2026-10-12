@@ -209,6 +209,8 @@ collections:
               - { label: Value, name: value, widget: text, hint: "Phone number, handle, URL, or address" }
               - { label: Link URL, name: url, widget: string, required: false, default: '', hint: "Optional clickable link (tel:, mailto:, or https://)" }
               - { label: Display Order, name: order, widget: number, value_type: int }
+              - { label: Show in footer, name: showInFooter, widget: boolean, default: false }
+              - { label: Show on contact page, name: showInContact, widget: boolean, default: false }
 
   - name: privacy
     label: Privacy Policy
