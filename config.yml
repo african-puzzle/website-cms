@@ -95,11 +95,11 @@ collections:
       - label: Title i18n Key
         name: titleKey
         widget: string
-        hint: "i18n key for the feature title (e.g. features.projects_title)"
+        hint: "i18n key for the feature title (e.g. features.programmes_title)"
       - label: Description i18n Key
         name: descKey
         widget: string
-        hint: "i18n key for the feature description (e.g. features.projects_desc)"
+        hint: "i18n key for the feature description (e.g. features.programmes_desc)"
       - label: App Screenshot
         name: screen
         widget: image
@@ -149,6 +149,9 @@ collections:
             name: youtubeVideoId
             widget: string
             hint: "The 11-character ID from the YouTube URL (e.g. dQw4w9WgXcQ)"
+          - { label: App launched, name: launched, widget: boolean, default: false, hint: "On: the homepage shows the Google Play badge instead of 'Contact us'" }
+          - { label: Instagram handle, name: instagramHandle, widget: string }
+          - { label: Instagram URL, name: instagramUrl, widget: string }
       - name: instagram
         label: Instagram Feed
         file: src/content/settings/instagram.json
@@ -246,6 +249,7 @@ collections:
               - { label: Media, name: media, widget: string }
               - { label: Download, name: download, widget: string }
               - { label: Language, name: language, widget: string }
+              - { label: Notify, name: notify, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -253,16 +257,10 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: CTA, name: cta, widget: string }
-              - { label: Learn More, name: learn_more, widget: string }
-          - label: Intro
-            name: intro
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Audiences, name: audiences, widget: string }
+              - { label: CTA How, name: cta_how, widget: string }
+              - { label: CTA Download, name: cta_download, widget: string }
+              - { label: CTA Notify, name: cta_notify, widget: string }
+              - { label: Launch Badge, name: launch_badge, widget: string }
           - label: Features
             name: features
             widget: object
@@ -271,14 +269,18 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Projects Title, name: projects_title, widget: string }
-              - { label: Projects Desc, name: projects_desc, widget: text }
-              - { label: Clients Title, name: clients_title, widget: string }
-              - { label: Clients Desc, name: clients_desc, widget: text }
-              - { label: Album Title, name: album_title, widget: string }
-              - { label: Album Desc, name: album_desc, widget: text }
+              - { label: Programmes Title, name: programmes_title, widget: string }
+              - { label: Programmes Desc, name: programmes_desc, widget: text }
+              - { label: Contacts Title, name: contacts_title, widget: string }
+              - { label: Contacts Desc, name: contacts_desc, widget: text }
+              - { label: Measurements Title, name: measurements_title, widget: string }
+              - { label: Measurements Desc, name: measurements_desc, widget: text }
+              - { label: Albums Title, name: albums_title, widget: string }
+              - { label: Albums Desc, name: albums_desc, widget: text }
               - { label: Appointments Title, name: appointments_title, widget: string }
               - { label: Appointments Desc, name: appointments_desc, widget: text }
+              - { label: Collab Title, name: collab_title, widget: string }
+              - { label: Collab Desc, name: collab_desc, widget: text }
           - label: Benefits
             name: benefits
             widget: object
@@ -300,13 +302,16 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: More Countries, name: more_countries, widget: string, hint: "Keep {count}: the site replaces it with a number" }
           - label: CTA
             name: cta
             widget: object
             collapsed: true
             fields:
               - { label: Title, name: title, widget: string }
+              - { label: Title Live, name: title_live, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: Subtitle Live, name: subtitle_live, widget: string }
               - { label: Button, name: button, widget: string }
           - label: About
             name: about
@@ -347,6 +352,9 @@ collections:
               - { label: Filter Press Release, name: filter_press_release, widget: string }
               - { label: Filter Videos, name: filter_videos, widget: string }
               - { label: Load More, name: load_more, widget: string }
+              - { label: Filter Radio, name: filter_radio, widget: string }
+              - { label: Filter Articles, name: filter_articles, widget: string }
+              - { label: Filter Social, name: filter_social, widget: string }
           - label: Privacy
             name: privacy
             widget: object
@@ -360,6 +368,13 @@ collections:
             collapsed: true
             fields:
               - { label: Banner Title, name: banner_title, widget: string }
+              - { label: Banner Title Live, name: banner_title_live, widget: string }
+              - { label: Coming Soon, name: coming_soon, widget: string }
+              - { label: Play Badge Alt, name: play_badge_alt, widget: string }
+              - { label: Play Badge Live Alt, name: play_badge_live_alt, widget: string }
+              - { label: App Badge Alt, name: app_badge_alt, widget: string }
+              - { label: App Badge Eyebrow, name: app_badge_eyebrow, widget: string }
+              - { label: App Badge Title, name: app_badge_title, widget: string }
           - label: Footer
             name: footer
             widget: object
@@ -369,6 +384,7 @@ collections:
               - { label: Privacy, name: privacy, widget: string }
               - { label: Made With, name: made_with, widget: string }
               - { label: In, name: in, widget: string }
+              - { label: Links Label, name: links_label, widget: string }
           - label: Error Pages
             name: error
             widget: object
@@ -377,6 +393,57 @@ collections:
               - { label: Not Found, name: not_found, widget: string }
               - { label: Not Found Desc, name: not_found_description, widget: text }
               - { label: Back Home, name: back_home, widget: string }
+          - label: Instagram
+            name: instagram
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Alt, name: alt, widget: string }
+          - label: Theme
+            name: theme
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Light, name: light, widget: string }
+              - { label: System, name: system, widget: string }
+              - { label: Dark, name: dark, widget: string }
+          - label: Audio First
+            name: audio_first
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: Hint, name: hint, widget: string }
+          - label: Proof
+            name: proof
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Audio Title, name: audio_title, widget: string }
+              - { label: Audio Body, name: audio_body, widget: text }
+              - { label: Pricing Title, name: pricing_title, widget: string }
+              - { label: Pricing Body, name: pricing_body, widget: text }
+              - { label: Audience Title, name: audience_title, widget: string }
+              - { label: Audience Body, name: audience_body, widget: text }
+          - label: Pricing
+            name: pricing
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+          - label: Partners
+            name: partners
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: CTA, name: cta, widget: string }
+              - { label: Team Link, name: team_link, widget: string }
 
       - name: en
         label: English (EN)
@@ -396,6 +463,7 @@ collections:
               - { label: Media, name: media, widget: string }
               - { label: Download, name: download, widget: string }
               - { label: Language, name: language, widget: string }
+              - { label: Notify, name: notify, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -403,16 +471,10 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: CTA, name: cta, widget: string }
-              - { label: Learn More, name: learn_more, widget: string }
-          - label: Intro
-            name: intro
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Audiences, name: audiences, widget: string }
+              - { label: CTA How, name: cta_how, widget: string }
+              - { label: CTA Download, name: cta_download, widget: string }
+              - { label: CTA Notify, name: cta_notify, widget: string }
+              - { label: Launch Badge, name: launch_badge, widget: string }
           - label: Features
             name: features
             widget: object
@@ -421,14 +483,18 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Projects Title, name: projects_title, widget: string }
-              - { label: Projects Desc, name: projects_desc, widget: text }
-              - { label: Clients Title, name: clients_title, widget: string }
-              - { label: Clients Desc, name: clients_desc, widget: text }
-              - { label: Album Title, name: album_title, widget: string }
-              - { label: Album Desc, name: album_desc, widget: text }
+              - { label: Programmes Title, name: programmes_title, widget: string }
+              - { label: Programmes Desc, name: programmes_desc, widget: text }
+              - { label: Contacts Title, name: contacts_title, widget: string }
+              - { label: Contacts Desc, name: contacts_desc, widget: text }
+              - { label: Measurements Title, name: measurements_title, widget: string }
+              - { label: Measurements Desc, name: measurements_desc, widget: text }
+              - { label: Albums Title, name: albums_title, widget: string }
+              - { label: Albums Desc, name: albums_desc, widget: text }
               - { label: Appointments Title, name: appointments_title, widget: string }
               - { label: Appointments Desc, name: appointments_desc, widget: text }
+              - { label: Collab Title, name: collab_title, widget: string }
+              - { label: Collab Desc, name: collab_desc, widget: text }
           - label: Benefits
             name: benefits
             widget: object
@@ -450,13 +516,16 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: More Countries, name: more_countries, widget: string, hint: "Keep {count}: the site replaces it with a number" }
           - label: CTA
             name: cta
             widget: object
             collapsed: true
             fields:
               - { label: Title, name: title, widget: string }
+              - { label: Title Live, name: title_live, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: Subtitle Live, name: subtitle_live, widget: string }
               - { label: Button, name: button, widget: string }
           - label: About
             name: about
@@ -497,6 +566,9 @@ collections:
               - { label: Filter Press Release, name: filter_press_release, widget: string }
               - { label: Filter Videos, name: filter_videos, widget: string }
               - { label: Load More, name: load_more, widget: string }
+              - { label: Filter Radio, name: filter_radio, widget: string }
+              - { label: Filter Articles, name: filter_articles, widget: string }
+              - { label: Filter Social, name: filter_social, widget: string }
           - label: Privacy
             name: privacy
             widget: object
@@ -510,6 +582,13 @@ collections:
             collapsed: true
             fields:
               - { label: Banner Title, name: banner_title, widget: string }
+              - { label: Banner Title Live, name: banner_title_live, widget: string }
+              - { label: Coming Soon, name: coming_soon, widget: string }
+              - { label: Play Badge Alt, name: play_badge_alt, widget: string }
+              - { label: Play Badge Live Alt, name: play_badge_live_alt, widget: string }
+              - { label: App Badge Alt, name: app_badge_alt, widget: string }
+              - { label: App Badge Eyebrow, name: app_badge_eyebrow, widget: string }
+              - { label: App Badge Title, name: app_badge_title, widget: string }
           - label: Footer
             name: footer
             widget: object
@@ -519,6 +598,7 @@ collections:
               - { label: Privacy, name: privacy, widget: string }
               - { label: Made With, name: made_with, widget: string }
               - { label: In, name: in, widget: string }
+              - { label: Links Label, name: links_label, widget: string }
           - label: Error Pages
             name: error
             widget: object
@@ -527,6 +607,57 @@ collections:
               - { label: Not Found, name: not_found, widget: string }
               - { label: Not Found Desc, name: not_found_description, widget: text }
               - { label: Back Home, name: back_home, widget: string }
+          - label: Instagram
+            name: instagram
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Alt, name: alt, widget: string }
+          - label: Theme
+            name: theme
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Light, name: light, widget: string }
+              - { label: System, name: system, widget: string }
+              - { label: Dark, name: dark, widget: string }
+          - label: Audio First
+            name: audio_first
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: Hint, name: hint, widget: string }
+          - label: Proof
+            name: proof
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Audio Title, name: audio_title, widget: string }
+              - { label: Audio Body, name: audio_body, widget: text }
+              - { label: Pricing Title, name: pricing_title, widget: string }
+              - { label: Pricing Body, name: pricing_body, widget: text }
+              - { label: Audience Title, name: audience_title, widget: string }
+              - { label: Audience Body, name: audience_body, widget: text }
+          - label: Pricing
+            name: pricing
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+          - label: Partners
+            name: partners
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: CTA, name: cta, widget: string }
+              - { label: Team Link, name: team_link, widget: string }
 
       - name: pcm
         label: Pidgin (PCM)
@@ -546,6 +677,7 @@ collections:
               - { label: Media, name: media, widget: string }
               - { label: Download, name: download, widget: string }
               - { label: Language, name: language, widget: string }
+              - { label: Notify, name: notify, widget: string }
           - label: Hero
             name: hero
             widget: object
@@ -553,16 +685,10 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: CTA, name: cta, widget: string }
-              - { label: Learn More, name: learn_more, widget: string }
-          - label: Intro
-            name: intro
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Audiences, name: audiences, widget: string }
+              - { label: CTA How, name: cta_how, widget: string }
+              - { label: CTA Download, name: cta_download, widget: string }
+              - { label: CTA Notify, name: cta_notify, widget: string }
+              - { label: Launch Badge, name: launch_badge, widget: string }
           - label: Features
             name: features
             widget: object
@@ -571,14 +697,18 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
-              - { label: Projects Title, name: projects_title, widget: string }
-              - { label: Projects Desc, name: projects_desc, widget: text }
-              - { label: Clients Title, name: clients_title, widget: string }
-              - { label: Clients Desc, name: clients_desc, widget: text }
-              - { label: Album Title, name: album_title, widget: string }
-              - { label: Album Desc, name: album_desc, widget: text }
+              - { label: Programmes Title, name: programmes_title, widget: string }
+              - { label: Programmes Desc, name: programmes_desc, widget: text }
+              - { label: Contacts Title, name: contacts_title, widget: string }
+              - { label: Contacts Desc, name: contacts_desc, widget: text }
+              - { label: Measurements Title, name: measurements_title, widget: string }
+              - { label: Measurements Desc, name: measurements_desc, widget: text }
+              - { label: Albums Title, name: albums_title, widget: string }
+              - { label: Albums Desc, name: albums_desc, widget: text }
               - { label: Appointments Title, name: appointments_title, widget: string }
               - { label: Appointments Desc, name: appointments_desc, widget: text }
+              - { label: Collab Title, name: collab_title, widget: string }
+              - { label: Collab Desc, name: collab_desc, widget: text }
           - label: Benefits
             name: benefits
             widget: object
@@ -600,13 +730,16 @@ collections:
               - { label: Label, name: label, widget: string }
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: More Countries, name: more_countries, widget: string, hint: "Keep {count}: the site replaces it with a number" }
           - label: CTA
             name: cta
             widget: object
             collapsed: true
             fields:
               - { label: Title, name: title, widget: string }
+              - { label: Title Live, name: title_live, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
+              - { label: Subtitle Live, name: subtitle_live, widget: string }
               - { label: Button, name: button, widget: string }
           - label: About
             name: about
@@ -647,6 +780,9 @@ collections:
               - { label: Filter Press Release, name: filter_press_release, widget: string }
               - { label: Filter Videos, name: filter_videos, widget: string }
               - { label: Load More, name: load_more, widget: string }
+              - { label: Filter Radio, name: filter_radio, widget: string }
+              - { label: Filter Articles, name: filter_articles, widget: string }
+              - { label: Filter Social, name: filter_social, widget: string }
           - label: Privacy
             name: privacy
             widget: object
@@ -660,6 +796,13 @@ collections:
             collapsed: true
             fields:
               - { label: Banner Title, name: banner_title, widget: string }
+              - { label: Banner Title Live, name: banner_title_live, widget: string }
+              - { label: Coming Soon, name: coming_soon, widget: string }
+              - { label: Play Badge Alt, name: play_badge_alt, widget: string }
+              - { label: Play Badge Live Alt, name: play_badge_live_alt, widget: string }
+              - { label: App Badge Alt, name: app_badge_alt, widget: string }
+              - { label: App Badge Eyebrow, name: app_badge_eyebrow, widget: string }
+              - { label: App Badge Title, name: app_badge_title, widget: string }
           - label: Footer
             name: footer
             widget: object
@@ -669,6 +812,7 @@ collections:
               - { label: Privacy, name: privacy, widget: string }
               - { label: Made With, name: made_with, widget: string }
               - { label: In, name: in, widget: string }
+              - { label: Links Label, name: links_label, widget: string }
           - label: Error Pages
             name: error
             widget: object
@@ -677,3 +821,54 @@ collections:
               - { label: Not Found, name: not_found, widget: string }
               - { label: Not Found Desc, name: not_found_description, widget: text }
               - { label: Back Home, name: back_home, widget: string }
+          - label: Instagram
+            name: instagram
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Alt, name: alt, widget: string }
+          - label: Theme
+            name: theme
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Light, name: light, widget: string }
+              - { label: System, name: system, widget: string }
+              - { label: Dark, name: dark, widget: string }
+          - label: Audio First
+            name: audio_first
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: Hint, name: hint, widget: string }
+          - label: Proof
+            name: proof
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Audio Title, name: audio_title, widget: string }
+              - { label: Audio Body, name: audio_body, widget: text }
+              - { label: Pricing Title, name: pricing_title, widget: string }
+              - { label: Pricing Body, name: pricing_body, widget: text }
+              - { label: Audience Title, name: audience_title, widget: string }
+              - { label: Audience Body, name: audience_body, widget: text }
+          - label: Pricing
+            name: pricing
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+          - label: Partners
+            name: partners
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: CTA, name: cta, widget: string }
+              - { label: Team Link, name: team_link, widget: string }
