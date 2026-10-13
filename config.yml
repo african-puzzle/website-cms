@@ -100,10 +100,19 @@ collections:
         name: descKey
         widget: string
         hint: "i18n key for the feature description (e.g. features.programmes_desc)"
-      - label: App Screenshot
+      - label: App Screenshot (French, default)
         name: screen
         widget: image
-        hint: "Phone screenshot shown in the feature card (WebP, in /images/app/)"
+        media_folder: /public/images/app
+        public_folder: /images/app
+        hint: "Phone screenshot shown in the feature card (WebP). Used for fr and pcm, and for en when no English screenshot is set."
+      - label: App Screenshot (English, optional)
+        name: screenEn
+        widget: image
+        required: false
+        media_folder: /public/images/app/en
+        public_folder: /images/app/en
+        hint: "English version of the screenshot. Leave empty to use the French one."
       - label: Card Background Class
         name: cardBg
         widget: select
