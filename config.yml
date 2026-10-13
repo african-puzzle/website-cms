@@ -100,16 +100,21 @@ collections:
         name: descKey
         widget: string
         hint: "i18n key for the feature description (e.g. features.projects_desc)"
-      - { label: GIF, name: gif, widget: image }
+      - label: App Screenshot
+        name: screen
+        widget: image
+        hint: "Phone screenshot shown in the feature card (WebP, in /images/app/)"
       - label: Card Background Class
         name: cardBg
         widget: select
         hint: "Background color for this feature card"
         options:
-          - { label: 'Yellow (Projects)', value: 'bg-feature-projects' }
-          - { label: 'Purple (Clients)', value: 'bg-feature-clients' }
-          - { label: 'Orange (Album)', value: 'bg-feature-album' }
-          - { label: 'Blue (Appointments)', value: 'bg-feature-appointments' }
+          - { label: 'Programmes', value: 'bg-feature-programmes' }
+          - { label: 'Contacts', value: 'bg-feature-contacts' }
+          - { label: 'Measurements', value: 'bg-feature-measurements' }
+          - { label: 'Album', value: 'bg-feature-album' }
+          - { label: 'Appointments', value: 'bg-feature-appointments' }
+          - { label: 'Collaborators', value: 'bg-feature-collab' }
       - { label: Display Order, name: order, widget: number, value_type: int }
 
   - name: countries
